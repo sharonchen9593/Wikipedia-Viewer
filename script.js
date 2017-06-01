@@ -24,6 +24,7 @@ $(function () {
         success: function(data) {
           console.log("sucess!", data)
           $('.searchBox').val('')
+          $('.heading').animate({'margin-top': '20px'}, 'slow')
           searchBox(data)
         },
         error: function() {
@@ -44,7 +45,7 @@ $(function () {
 
     for (var i = 0; i<15; i++) {
       var link = $("<a href = '" + url[i] + "' target='_blank'></a>")
-      var item = $("<div> <p class = 'title'>" + titles[i] + "</p></div>")
+      var item = $("<div class = 'indivResults'> <p class = 'title'>" + titles[i] + "</p></div>")
       var summary = $("<p class = 'summary'> " + summaryData[i] + "</p>")
       item.append(summary)
       link.append(item)
