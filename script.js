@@ -9,35 +9,48 @@ $(function () {
 
   function searchWiki() {
     event.preventDefault();
-    $.ajax({
-      url: apiURL,
-      type: "GET",
-      data: {
-        origin: '*',
-        action: "opensearch",
-        search: $('.searchBox').val(), // change this to user input
-        limit: "15",
-        format: "json",
-      },
-      success: function(data) {
-        console.log("sucess!", data)
-        $('.searchBox').val('')
-        searchBox(data)
-      },
-      error: function() {
-        console.log("error getting data :(")
-      }
-    })
+    if ($('.searchBox').val()) {
+
+      $.ajax({
+        url: apiURL,
+        type: "GET",
+        data: {
+          origin: '*',
+          action: "opensearch",
+          search: $('.searchBox').val(), // change this to user input
+          limit: "15",
+          format: "json",
+        },
+        success: function(data) {
+          console.log("sucess!", data)
+          $('.searchBox').val('')
+          searchBox(data)
+        },
+        error: function() {
+          console.log("error getting data :(")
+        }
+      })
+
+    }
   }
 
+  function searchBox (data) {
+    var searchPhrase = data[0];
+    console.log(searchPhrase)
+    $(".searchOutputBox").html("<p>Top 15 Results For: " + searchPhrase + "</p>")
+    var titles = data[1];
+    var summaryData = data[2];
+    var url = data[3];
 
-
-
-
-
-
-
-
+    for (var i = 0; i<15; i++) {
+      var link = $("<a href = '" + url[i] + "' target='_blank'></a>")
+      var item = $("<div> <p class = 'title'>" + titles[i] + "</p></div>")
+      var summary = $("<p class = 'summary'> " + summaryData[i] + "</p>")
+      item.append(summary)
+      link.append(item)
+      $(".searchOutputBox").append(link)
+    }
+  }
 
 
 
