@@ -66,3 +66,11 @@ a {
   padding: 0;
   font-size: 18px;
 }
+
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+}
