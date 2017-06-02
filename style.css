@@ -1,14 +1,15 @@
 body {
   background-color: #000099;
   text-align: center;
-  font-family: Arial;
+  font-family: 'El Messiri', Arial;
   color: white;
 }
 
 .heading {
   margin-top: 20%;
   text-align: center;
-  font-size: 30px;
+  font-size: 50px;
+  font-weight: bold;
 }
 
 .searchBox {
@@ -42,6 +43,7 @@ a {
 }
 
 .indivResults {
+  font-family: Arial;
   background-color: #e6e6e6;
   margin: 10px 10%;
   padding: 10px;
